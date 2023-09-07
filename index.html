@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title id="title">Current Time</title>
 </head>
 <body>
-    <h1>hello</h1>
+    <script>
+        const titleElement = document.getElementById('title');
+
+        function updateTime() {
+            const now = new Date();
+            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const dayOfWeekAbbreviation = daysOfWeek[now.getDay()];
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            titleElement.textContent = `${dayOfWeekAbbreviation} ${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateTime, 1000); // Update title every second
+        updateTime();
+    </script>
 </body>
 </html>
